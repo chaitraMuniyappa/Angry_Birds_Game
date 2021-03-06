@@ -39,7 +39,7 @@ function setup(){
     platform = new Ground(150,305,300,170);
 
     log6 = new Log(230,180,80,PI/2);
-    chain = new Chain(bird.body,log6.body);
+    sling = new SlingShot(bird.body,{x: 200, y:75});
 }
 
 function draw(){
@@ -64,7 +64,13 @@ function draw(){
     log5.display();
 
     log6.display();
-    chain.display();
+    sling.display();
     bird.display();
     platform.display();
+}
+function mouseDragged(){
+    Matter.Body.setPosition(bird.body,{x: mouseX, y:mouseY});
+}
+function mouseReleased(){
+    sling.fly();
 }
